@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 瞬间 Tab：7 天内的事件流（解锁 / 亮屏 / 熄屏 / 打开应用 / 关闭应用 / 开机） -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 我 / 对方 切换 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="6dp">
+
+        <Button
+            android:id="@+id/btnOwnerMe"
+            style="@style/TabButton"
+            android:layout_height="40dp"
+            android:text="我" />
+
+        <Button
+            android:id="@+id/btnOwnerPeer"
+            style="@style/TabButton"
+            android:layout_height="40dp"
+            android:text="对方" />
+
+        <!-- 对方暂停共享时在这里提示（共享开关是全局的，三个 Tab 都能看到状态） -->
+        <TextView
+            android:id="@+id/tvTimelinePeerState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:textSize="12sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- 最近 7 天日期选择（代码动态生成按钮） -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/llDateBarTimeline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp" />
+    </HorizontalScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <!-- 分页：记录太多，每页 30 条 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp">
+
+        <Button
+            android:id="@+id/btnPrevPage"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:minWidth="0dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:text="上一页"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvPageInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="第 1 / 1 页"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/btnNextPage"
+            android:layout_width="wrap_content"
+            android:layout_height="34dp"
+            android:minWidth="0dp"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:text="下一页"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@+id/lvTimeline"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/divider"
+            android:dividerHeight="1dp" />
+
+        <TextView
+            android:id="@+id/tvTimelineEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="这一天还没有记录"
+            android:textColor="@color/text_hint"
+            android:textSize="14sp"
+            android:visibility="gone" />
+    </FrameLayout>
+</LinearLayout>

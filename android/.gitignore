@@ -1,0 +1,10 @@
+# 本机相关，不入库
+local.properties
+.gradle/
+build/
+app/build/
+captures/
+.idea/
+*.iml
+*.apk
+*.aab

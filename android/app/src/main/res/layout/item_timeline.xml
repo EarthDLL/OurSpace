@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 瞬间列表行：时间 + 事件描述 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="12dp"
+    android:paddingTop="10dp"
+    android:paddingRight="12dp"
+    android:paddingBottom="10dp">
+
+    <!-- 时间列：必须能一行放下 HH:mm:ss（8 个字符，14sp 粗体），
+         否则会折成两行，非常难看。这里给足宽度并强制单行。 -->
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:ellipsize="none"
+        android:textColor="@color/brand"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvEventText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvEventDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_hint"
+            android:textSize="12sp" />
+    </LinearLayout>
+</LinearLayout>

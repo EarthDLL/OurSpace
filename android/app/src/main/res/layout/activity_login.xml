@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 登录 / 首次配置页 -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:text="OurSpace"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="18dp"
+            android:text="只属于你们两个人的空间"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+
+        <TextView style="@style/FieldLabel" android:text="服务器地址" />
+
+        <EditText
+            android:id="@+id/etServer"
+            style="@style/InputStyle"
+            android:hint="http://192.168.1.5:8080"
+            android:inputType="textUri"
+            android:maxLines="1" />
+
+        <TextView
+            style="@style/FieldLabel"
+            android:layout_marginTop="10dp"
+            android:text="配对密钥（与后端 payloadSecret 一致）" />
+
+        <EditText
+            android:id="@+id/etSecret"
+            style="@style/InputStyle"
+            android:hint="双方约定的长随机字符串"
+            android:inputType="text"
+            android:maxLines="1" />
+
+        <TextView
+            style="@style/FieldLabel"
+            android:layout_marginTop="10dp"
+            android:text="用户名" />
+
+        <EditText
+            android:id="@+id/etUsername"
+            style="@style/InputStyle"
+            android:hint="后端创建的用户名"
+            android:inputType="text"
+            android:maxLines="1" />
+
+        <TextView
+            style="@style/FieldLabel"
+            android:layout_marginTop="10dp"
+            android:text="密码" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            style="@style/InputStyle"
+            android:hint="密码"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="登录并开始共享" />
+
+        <TextView
+            android:id="@+id/tvLoginStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:textColor="@color/warn_red"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:lineSpacingExtra="3dp"
+            android:text="说明：账号由后端命令行创建。配对密钥用于给所有业务数据做 AES-256-GCM 加密，填错会导致服务端返回 bad_envelope。"
+            android:textColor="@color/text_hint"
+            android:textSize="12sp" />
+    </LinearLayout>
+</ScrollView>

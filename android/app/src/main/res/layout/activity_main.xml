@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 主界面：顶部标题栏 + 中间 FrameLayout 切换三个 Tab + 底部自绘导航 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 顶部标题栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/brand"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="14dp"
+        android:paddingRight="6dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="概览"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- 共享开关放在标题栏：三个 Tab 都看得到、随时能暂停/恢复。
+             之前只在「概览」里有开关，用户会以为它只作用于概览那一栏。 -->
+        <TextView
+            android:id="@+id/tvHeaderSharing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="共享中"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <Switch
+            android:id="@+id/swSharing"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp" />
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:minWidth="0dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="设置"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- 内容区：三个 include 布局叠在一起，用可见性切换 -->
+    <FrameLayout
+        android:id="@+id/contentArea"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <include
+            android:id="@+id/tabOverview"
+            layout="@layout/tab_overview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+
+        <include
+            android:id="@+id/tabTimeline"
+            layout="@layout/tab_timeline"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/tabStats"
+            layout="@layout/tab_stats"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- 底部导航：不用 BottomNavigationView，自己用 LinearLayout + Button 实现 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <Button
+            android:id="@+id/tabBtnOverview"
+            style="@style/TabButton"
+            android:text="概览" />
+
+        <Button
+            android:id="@+id/tabBtnTimeline"
+            style="@style/TabButton"
+            android:text="瞬间" />
+
+        <Button
+            android:id="@+id/tabBtnStats"
+            style="@style/TabButton"
+            android:text="统计" />
+    </LinearLayout>
+</LinearLayout>

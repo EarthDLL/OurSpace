@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  允许明文 HTTP 是有意为之：
+  1) 使用者通常部署在家庭内网（例如 http://192.168.1.5:8080），没有证书；
+  2) 业务内容本身已经在应用层用 AES-256-GCM 信封加密（见 Crypto.kt / API.md 第 1 节），
+     即使走明文 HTTP，抓包也只能看到一段不可读的 base64 密文；
+  3) 若后端配置了 TLS（config.json.tls），把服务器地址填成 https:// 即可，两层叠加。
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 统计 Tab：应用使用时长排行 + 当天总时长 + 近 7 天柱状图（自绘）
+     整页放在一个 ScrollView 里一起滚动：之前应用排行是个独立的 ListView，
+     被上面的卡片挤得只剩一小块、还得单独在里面滚，很难用。 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 我 / 对方 切换：统计数据是双方互相共享的，这里可以切换看谁的 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="6dp">
+
+        <Button
+            android:id="@+id/btnStatsMe"
+            style="@style/TabButton"
+            android:layout_height="40dp"
+            android:text="我" />
+
+        <Button
+            android:id="@+id/btnStatsPeer"
+            style="@style/TabButton"
+            android:layout_height="40dp"
+            android:text="对方" />
+
+        <!-- 对方暂停共享时在这里提示（共享开关是全局的，三个 Tab 都能看到状态） -->
+        <TextView
+            android:id="@+id/tvStatsPeerState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:textSize="12sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- 近 7 天日期选择 -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/llDateBarStats"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp" />
+    </HorizontalScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <LinearLayout
+                style="@style/CardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/FieldLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="当天总屏幕时长" />
+
+                <TextView
+                    android:id="@+id/tvTotalMs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="—"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/CardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/SectionTitle"
+                    android:text="近 7 天每日屏幕时长" />
+
+                <com.ourspace.app.BarChartView
+                    android:id="@+id/barChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp" />
+            </LinearLayout>
+
+            <TextView
+                style="@style/SectionTitle"
+                android:layout_marginLeft="12dp"
+                android:text="应用使用时长排行" />
+
+            <!-- 应用排行：直接铺在这里，和上面的卡片连成一片，整页一起滚 -->
+            <LinearLayout
+                android:id="@+id/llAppUsage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/tvStatsEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:paddingTop="30dp"
+                android:paddingBottom="30dp"
+                android:text="这一天还没有统计数据"
+                android:textColor="@color/text_hint"
+                android:textSize="14sp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

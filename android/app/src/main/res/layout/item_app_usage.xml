@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 应用使用时长行：应用名 + 横向进度条 + 时长 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="12dp"
+    android:paddingTop="9dp"
+    android:paddingRight="12dp"
+    android:paddingBottom="9dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvAppName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvAppMs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pbApp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_marginTop="6dp"
+        android:max="100"
+        android:progress="0" />
+</LinearLayout>

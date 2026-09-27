@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 概览 Tab：我的共享开关 + 对方状态卡片 -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="16dp">
+
+        <!-- 我的共享开关：随时可以暂停/继续上传 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="14dp"
+            android:paddingTop="10dp"
+            android:paddingRight="14dp"
+            android:paddingBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="我的共享"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSharingHint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="暂停后本机不再上传任何数据，仅保存在本地"
+                    android:textColor="@color/text_hint"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvSharingState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="共享中"
+                android:textColor="@color/ok_green"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- 同步状态：连不上服务器时在这里明确提示，免得用户以为数据坏了 -->
+        <TextView
+            android:id="@+id/tvSyncState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/bg_card"
+            android:lineSpacingExtra="3dp"
+            android:padding="12dp"
+            android:text="—"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+
+        <!-- 对方状态卡片 -->
+        <LinearLayout
+            style="@style/CardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvPeerName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="对方状态"
+                    style="@style/TitleText" />
+
+                <TextView
+                    android:id="@+id/tvPeerState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="—"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvPeerUpdated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="更新时间：—"
+                android:textColor="@color/text_hint"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/divider" />
+
+            <TextView
+                android:id="@+id/tvPeerBattery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="3dp"
+                android:text="电量：—"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvPeerNet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="3dp"
+                android:text="网络：—"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvPeerScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="3dp"
+                android:text="屏幕：—"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvPeerCurrentApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="3dp"
+                android:text="当前使用：—"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvPeerLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="3dp"
+                android:text="位置：—"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvPeerTodayScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="3dp"
+                android:text="今日屏幕时长：—"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvPeerTodayUnlocks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="3dp"
+                android:text="今日解锁次数：—"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvPeerTopApps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="2dp"
+                android:paddingTop="6dp"
+                android:text="今日应用 Top5：—"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- 我的状态卡片（读本地库，离线也能看） -->
+        <LinearLayout
+            style="@style/CardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TitleText"
+                android:text="我的状态" />
+
+            <TextView
+                android:id="@+id/tvMyLive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="3dp"
+                android:paddingTop="6dp"
+                android:text="—"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnRefreshOverview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="10dp"
+            android:text="刷新" />
+    </LinearLayout>
+</ScrollView>

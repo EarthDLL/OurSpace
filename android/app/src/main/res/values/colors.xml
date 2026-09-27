@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand">#4A6FA5</color>
+    <color name="brand_dark">#33507A</color>
+    <color name="accent">#E4737E</color>
+    <color name="page_bg">#F2F4F7</color>
+    <color name="text_primary">#222222</color>
+    <color name="text_secondary">#666666</color>
+    <color name="text_hint">#999999</color>
+    <color name="divider">#E0E0E0</color>
+    <color name="white">#FFFFFF</color>
+    <color name="chart_bar">#4A6FA5</color>
+    <color name="chart_bar_today">#E4737E</color>
+    <color name="ok_green">#2E7D32</color>
+    <color name="warn_red">#C62828</color>
+
+    <!-- “瞬间”列表：每种行为一个背景色，扫一眼就能分辨 -->
+    <color name="ev_unlock">#D6E4FF</color>      <!-- 解锁：蓝 -->
+    <color name="ev_screen_on">#D8F3DC</color>   <!-- 亮屏：绿 -->
+    <color name="ev_screen_off">#E4E6EB</color>  <!-- 熄屏：灰 -->
+    <color name="ev_app_open">#FFE8CC</color>    <!-- 打开应用：橙 -->
+    <color name="ev_app_close">#E7DFFF</color>   <!-- 关闭应用：紫 -->
+    <color name="ev_boot">#FFDCDC</color>        <!-- 开机：红 -->
+</resources>

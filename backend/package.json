@@ -1,0 +1,15 @@
+{
+  "name": "ourspace-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OurSpace 私密情侣共享 App 后端（零第三方依赖）",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "adduser": "node src/cli.js adduser",
+    "test": "node test/smoke.js"
+  }
+}

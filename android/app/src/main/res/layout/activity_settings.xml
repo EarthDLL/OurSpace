@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 设置页 -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="24dp">
+
+        <LinearLayout
+            style="@style/CardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/SectionTitle"
+                android:text="账号与服务器" />
+
+            <TextView style="@style/FieldLabel" android:text="服务器地址" />
+
+            <EditText
+                android:id="@+id/etServer"
+                style="@style/InputStyle"
+                android:hint="http://192.168.1.5:8080"
+                android:inputType="textUri"
+                android:maxLines="1" />
+
+            <TextView
+                style="@style/FieldLabel"
+                android:layout_marginTop="8dp"
+                android:text="配对密钥（= 后端 payloadSecret）" />
+
+            <EditText
+                android:id="@+id/etSecret"
+                style="@style/InputStyle"
+                android:hint="双方约定的长随机字符串"
+                android:inputType="text"
+                android:maxLines="1" />
+
+            <TextView
+                style="@style/FieldLabel"
+                android:layout_marginTop="8dp"
+                android:text="用户名" />
+
+            <EditText
+                android:id="@+id/etUsername"
+                style="@style/InputStyle"
+                android:enabled="false"
+                android:inputType="text"
+                android:maxLines="1" />
+
+            <TextView
+                android:id="@+id/tvUid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="—"
+                android:textColor="@color/text_hint"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvSaveStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/ok_green"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- 解锁记录开关：默认关闭，打开需二次确认 -->
+        <LinearLayout
+            style="@style/CardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="解锁记录"
+                    android:textColor="@color/text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/swUnlock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:lineSpacingExtra="2dp"
+                android:text="关闭时不会记录任何解锁时间。需双方自愿开启，且对方也能看到你是否关闭了此功能。"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvUnlockError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/warn_red"
+                android:textSize="13sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSyncNow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="10dp"
+            android:text="立即同步" />
+
+        <TextView
+            android:id="@+id/tvSyncStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginRight="12dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp" />
+
+        <!-- 权限引导 -->
+        <LinearLayout
+            style="@style/CardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/SectionTitle"
+                android:text="权限引导（建议按顺序逐项授予）" />
+
+            <ListView
+                android:id="@+id/lvPermissions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@color/divider"
+                android:dividerHeight="1dp"
+                android:paddingTop="4dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="2dp"
+                android:text="自启动 / 后台运行：不同厂商 ROM 需要手动允许“自启动”。小米：设置→应用设置→授权管理→自启动；华为/荣耀：设置→应用→应用启动管理→手动管理（允许自启动、允许关联启动、允许后台活动）；OPPO/一加：设置→电池→应用耗电管理→允许后台运行；vivo：设置→电池→后台高耗电→允许；三星：设置→电池→后台使用限制→把本应用加入“永不休眠的应用”。"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- 隐私说明 -->
+        <LinearLayout
+            style="@style/CardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/SectionTitle"
+                android:text="隐私说明" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="3dp"
+                android:text="共享开关由本人控制，暂停后本机不再上传任何数据，采集到的内容只保存在本机数据库里。所有上传内容在发送前都会用配对密钥做 AES-256-GCM 信封加密，服务端与网络中间人都无法直接读取。数据只保留最近 7 天，本机每天自动修剪一次过期数据。"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- 版本信息：前后端协议版本必须一致，不一致时这里会红字提示 -->
+        <LinearLayout
+            style="@style/CardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/SectionTitle"
+                android:text="版本" />
+
+            <TextView
+                android:id="@+id/tvVersionInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="3dp"
+                android:text="客户端：—\n服务端：—"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="10dp"
+            android:text="退出登录" />
+    </LinearLayout>
+</ScrollView>

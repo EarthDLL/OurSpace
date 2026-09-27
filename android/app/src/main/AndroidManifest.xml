@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ===== 网络：与后端通信（内容本身有 AES-GCM 信封加密） ===== -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- ===== 定位：只上报经纬度，地址文字由后端逆地理编码返回 ===== -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <!-- ===== 使用情况访问：统计应用使用时长 / 应用开关事件。属于特殊权限，需用户手动授予 ===== -->
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+
+    <!-- ===== 前台服务（Android 14+ 必须声明具体类型） ===== -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+
+    <!-- ===== 通知（Android 13+ 运行时权限）与开机自启 ===== -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- 需要按包名查询应用名（label），Android 11+ 必须声明 -->
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:launchMode="singleTask" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+
+        <!-- 采集前台服务：常驻通知「正在共享」。
+             foregroundServiceType 里同时写 location|dataSync，
+             但代码里会根据是否已授予定位权限动态选择实际类型，
+             避免 Android 14+ 在无定位权限时抛 SecurityException。 -->
+        <service
+            android:name=".CollectorService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="location|dataSync"
+            android:stopWithTask="false" />
+
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

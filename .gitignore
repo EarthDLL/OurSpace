@@ -1,0 +1,28 @@
+# 后端
+backend/config.json
+backend/data/
+backend/node_modules/
+
+# Android
+android/local.properties
+android/keystore/
+android/keystore.properties
+android/.gradle/
+android/build/
+android/app/build/
+android/.idea/
+android/*.iml
+android/.kotlin/
+
+# 本机编译用的 JDK（tools/fetch-jdk21.mjs 下载，约 300MB，可删）
+tools/jdk/
+tools/jdk21.zip
+
+# 本机编译用的 Gradle 家目录与临时目录（见 tools/_ci-build.cmd）
+.gh/
+.tmp/
+
+# 其他
+*.log
+.DS_Store
+Thumbs.db

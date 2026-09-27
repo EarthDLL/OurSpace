@@ -1,0 +1,12 @@
+{
+  "port": 8080,
+  "host": "0.0.0.0",
+  "tls": { "enabled": false, "cert": "", "key": "" },
+  "payloadSecret": "改成一串长随机字符（和 App 里填的一样）",
+  "jwtSecret": "另一串长随机字符",
+  "amapKey": "",
+  "db": "data/ourspace.db",
+  "retentionDays": 7,
+  "liveIntervalSec": 60,
+  "statsIntervalSec": 600
+}

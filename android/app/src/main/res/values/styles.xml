@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 全部使用系统自带主题/样式，不引入 Material 或 AndroidX -->
+    <style name="AppTheme" parent="@android:style/Theme.DeviceDefault.Light">
+        <item name="android:windowBackground">@color/page_bg</item>
+        <item name="android:colorAccent">@color/brand</item>
+        <!-- Android 15（API 35）起，targetSdk >= 35 的应用被强制全面屏（edge-to-edge）：
+             内容会一直铺到屏幕最顶端和最底端，于是 ActionBar 压住正文、
+             底部导航条被系统三键/手势条盖住。
+             这里显式关掉强制全面屏，恢复“系统栏占位、内容自动避让”的经典布局。
+             （平台自身的 AccessibiltyButtonChooserDialog 等也是用这个属性关的。） -->
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+
+    <!-- 注意：layout_width / layout_height 必须由元素自身或它的 style 提供，
+         否则 LayoutInflater 会抛 UnsupportedOperationException("You must supply a layout_width attribute.")
+         导致 Activity 直接闪退。下面这些文本样式都被不带宽高的 TextView 直接引用，
+         所以必须在这里补上尺寸。 -->
+    <style name="TitleText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="SectionTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <style name="FieldLabel">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="CardStyle">
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+
+    <style name="InputStyle">
+        <item name="android:background">@drawable/bg_input</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="TabButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/brand</item>
+        <item name="android:gravity">center</item>
+    </style>
+</resources>
